@@ -5,21 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     
-    //Bullets
-    //private Bullets bullet;
+    public float rotation;
     
-    private float rotation;
-    
-    //Fire rate player
-    public float fireRate;
     private float playerCanFire;
 
     //Delegate to kill player
     public delegate void Kill_Player();
     public Kill_Player Death;
-
-    //Bullet position
-    public Transform bullet_location;
 
     //GameObjects
     public GameObject Bullet_Boss;
@@ -28,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     //Player Momenet Speed
     public float MovementSpeed = 20.0f;
-    //public float JumpForce = 8f;
 
     //Player hp
     public float hp;
@@ -36,10 +27,12 @@ public class PlayerController : MonoBehaviour
     //Player jump Height
     public float Jump_Height;
 
-    private bool Is_Player_Jumping = false;
+    //Variable que usaremos en caso de aplicar animaciones
+    //private bool Is_Player_Jumping = false;
     
     private Rigidbody2D _rigidBody;
 
+        
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -48,21 +41,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        transform.position += new Vector3(movement,0,0) * Time.deltaTime * MovementSpeed;
-        */
-
-        //Con esta se evita que el jugador rote al chocar con elementos del mapa.
-        var movement = Input.GetAxis("Horizontal");
-        if (!Mathf.Approximately(0, movement))
-        {
-            transform.rotation = movement > 0 ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
-        }
 
         Control_Player();
         Jump();
-        //Shooting();
-        
     }
 
     private void Control_Player()
@@ -110,28 +91,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col) {
-        
-        if(col.gameObject.tag == "Ground")
-        {
-            Is_Player_Jumping = false;
-        }
-
-    }
-
     /*
-    private void Shooting()
+    void Shooting()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            Bullets bullet = pool.shoot();
-            bullet.transform.position = bullet_location.position;
-            bullet.transform.rotation = bullet_location.rotation;
-            playerCanFire = fireRate;
-            bullet.Fire();   
-        }
+        _nextFire = Time.time + _fireRate;
+        Instantiate(_bulletPrefab, transform.position + new Vector3(1.05f, 0, 0), Quaternion.identity);
     }
     */
+
     /*
     public void Kill_Player()
     {
