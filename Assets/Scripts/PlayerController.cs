@@ -46,8 +46,27 @@ public class PlayerController : MonoBehaviour
         Jump();
     }
 
-    private void Control_Player()
+    private void Control_Player()  
     {
+        Vector3 pos = transform.position;
+        pos.x += Input.GetAxis("Horizontal") * MovementSpeed * Time.deltaTime;
+        if (Input.GetAxis("Horizontal") > 0) 
+        {
+            transform.eulerAngles = new Vector2(0,0);
+            rotation = 1f;
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            transform.eulerAngles = new Vector2(0, 180);
+            rotation = -1f;
+        }
+        else 
+        {
+            rotation = -1f;
+        }
+        transform.position = pos;
+
+        /* 
         if (Input.GetKey(KeyCode.RightArrow))
         {
             //Sprite Rotation
@@ -66,7 +85,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             rotation = 0;
-        }
+        } */
     }
 
 

@@ -12,7 +12,6 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private float _bulletLifeTime = 3f;
 
-
     // Update is called once per frame
     void Update()
     {
@@ -35,5 +34,12 @@ public class BulletController : MonoBehaviour
             Destroy(this.gameObject);
         }
         
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.layer != 8)
+        {
+            Destroy(gameObject);
+        }
     }
 }
