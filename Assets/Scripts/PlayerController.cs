@@ -90,7 +90,12 @@ public class PlayerController : MonoBehaviour
             _rigidBody.AddForce(new Vector2(0, Jump_Height), ForceMode2D.Impulse);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collider) 
+    {
+        //Debug.Log("Trigger player");
+    }
 
+  
     /*
     void Shooting()
     {
