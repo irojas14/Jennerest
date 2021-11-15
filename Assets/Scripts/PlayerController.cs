@@ -21,11 +21,14 @@ public class PlayerController : MonoBehaviour
     //Player Momenet Speed
     public float MovementSpeed = 20.0f;
 
-    //Player hp
-    public float hp;
+    
 
     //Player jump Height
     public float Jump_Height;
+
+    //Player health
+    public int health = 5;
+    public int scoreWorth = 0;
 
     //Variable que usaremos en caso de aplicar animaciones
     //private bool Is_Player_Jumping = false;
@@ -91,43 +94,30 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if(Is_Player_Jumping == false)
-            {
-                Is_Player_Jumping = true;
-                GetComponent<Rigidbody2D>().AddForce(Vector2.up * Jump_Height);
-            }
-
-        }
-        */
-
         //Salto
         if (Input.GetButton("Jump") && Mathf.Abs(_rigidBody.velocity.y) < 0.001f)
         {
             _rigidBody.AddForce(new Vector2(0, Jump_Height), ForceMode2D.Impulse);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collider) 
+
+    public void Damage()
     {
-        //Debug.Log("Trigger player");
+        health -= 1;
+        Debug.Log("La vida del player es: " + health);
+        if (health < 1)
+        {
+            Destroy(gameObject);
+        }
+        //ScoreManager.AddScore(scoreWorth);
     }
 
-  
-    /*
-    void Shooting()
+    private void OnTriggerEnter2D(Collider2D other) 
     {
-        _nextFire = Time.time + _fireRate;
-        Instantiate(_bulletPrefab, transform.position + new Vector3(1.05f, 0, 0), Quaternion.identity);
+        if (other.gameObject.layer == 7)
+        {
+            Damage();
+        }
     }
-    */
-
-    /*
-    public void Kill_Player()
-    {
-
-    }
-    */
 
 }
