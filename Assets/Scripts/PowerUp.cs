@@ -7,27 +7,22 @@ public class PowerUp : MonoBehaviour
     // Powerup_1 = saltar mas alto
     // Powerup_2 = buffear el disparo
     // Powerup_3 = Moverse mas rapido
-        
-    private void OnTriggerEnter2D(Collider2D collision) 
+    
+    public float moreHeight = 4f;
+    
+    void OnTriggerEnter2D(Collider2D other) 
     {
         
-        if (collision.tag=="Player")
+        if (other.tag=="Player")
         {
-            // Acceder al script del player,  aunque no me funca ayuda jesus
-            /*
-            GameObject player = collision.gameObject;
-            Player playerScript = player.GetComponent<PlayerController>();
-            playerScript.Jump_Height += 10f;
-            */
-            Pickup();
+            /*Player jumpheight = other.gameObject.GetComponent<Player>();
+
+            jumpheight.AddJump(moreHeight);*/            
+            Destroy(this.gameObject);
         }
+    }  
 
-    }
-
-    void Pickup()
-    {   
-        Destroy(this.gameObject);
-    }
+   
 
 
 

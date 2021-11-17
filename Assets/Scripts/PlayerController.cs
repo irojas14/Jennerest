@@ -111,6 +111,12 @@ public class PlayerController : MonoBehaviour
         }
         //ScoreManager.AddScore(scoreWorth);
     }
+    public void AddJump(float moreHeight)
+    {
+        Jump_Height += moreHeight;
+
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other) 
     {

@@ -8,4 +8,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene"); //cargamos escena juego
     }
-}
+    public void QuitGame () 
+    {
+        Application.Quit ();
+        Debug.Log("Game is exiting");
+    }
+ }
+
