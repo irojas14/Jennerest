@@ -7,7 +7,7 @@ public class PowerUp : MonoBehaviour
     // Powerup_1 = saltar mas alto
     // Powerup_2 = buffear el disparo
     // Powerup_3 = Moverse mas rapido
-    
+    public int _powerupId;
     public float moreHeight = 4f;
     
     void OnTriggerEnter2D(Collider2D other) 
@@ -15,15 +15,26 @@ public class PowerUp : MonoBehaviour
         
         if (other.tag=="Player")
         {
-            /*Player jumpheight = other.gameObject.GetComponent<Player>();
+            if (_powerupId == 1)
+            {
+                Debug.Log("Recogido power up 1");
+            }
+            else if (_powerupId == 2)
+            {
+                Debug.Log("Recogido power up 2");
+            }
+            else if (_powerupId == 3)
+            {
+                Debug.Log("Recogido power up 3");
+            }
 
-            jumpheight.AddJump(moreHeight);*/            
+            else
+            {
+                Debug.Log("No hay id");
+            }
+        
             Destroy(this.gameObject);
         }
     }  
-
-   
-
-
-
 }
+   
