@@ -19,12 +19,12 @@ public class PlayerController : MonoBehaviour
     public GameObject GunPowerUp;
 
     //Player Momenet Speed
-    public float MovementSpeed = 20.0f;
-
-    
+    [SerializeField]
+    private float MovementSpeed;
 
     //Player jump Height
-    public float Jump_Height;
+    [SerializeField]
+    private float Jump_Height;
 
     //Player health
     public int health = 5;
@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     //private bool Is_Player_Jumping = false;
     
     private Rigidbody2D _rigidBody;
+
+    //PowerUps flags and variables
+    [SerializeField] private float _speedMultiplier = 1.3f;
+    [SerializeField] private float _jumpHeightMultiplier = 1.3f;
 
         
     void Start()
@@ -49,9 +53,10 @@ public class PlayerController : MonoBehaviour
         Jump();
     }
 
-    private void Control_Player()  
+    public void Control_Player()  
     {
         Vector3 pos = transform.position;
+
         pos.x += Input.GetAxis("Horizontal") * MovementSpeed * Time.deltaTime;
         if (Input.GetAxis("Horizontal") > 0) 
         {
@@ -74,9 +79,7 @@ public class PlayerController : MonoBehaviour
             rotation = -1f;
         }
         transform.position = pos;
-        
-        
-        
+          
         /* 
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -99,11 +102,10 @@ public class PlayerController : MonoBehaviour
         } */
 
 
-
     }
 
 
-    private void Jump()
+    public void Jump()
     {
         //Salto
         if (Input.GetButton("Jump") && Mathf.Abs(_rigidBody.velocity.y) < 0.001f)
@@ -122,12 +124,6 @@ public class PlayerController : MonoBehaviour
         }
         //ScoreManager.AddScore(scoreWorth);
     }
-    public void AddJump(float moreHeight)
-    {
-        Jump_Height += moreHeight;
-
-    }
-
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
@@ -137,4 +133,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void HigherJump()
+    {
+        Jump_Height *= _jumpHeightMultiplier;
+        StartCoroutine(HigherJumpDownCoroutine());
+    }
+
+    IEnumerator HigherJumpDownCoroutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        Jump_Height /= _jumpHeightMultiplier;
+    }
+
+    public void FastMovement()
+    {
+        MovementSpeed *= _speedMultiplier;
+        StartCoroutine(FastMovementDownCoroutine());
+    }
+
+    IEnumerator FastMovementDownCoroutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        MovementSpeed /= _speedMultiplier;
+    }
+
+    
 }
+
+

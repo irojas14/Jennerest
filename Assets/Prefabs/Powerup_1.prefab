@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6814559488966089368}
   - component: {fileID: 6814559488966089369}
-  - component: {fileID: 6814559488966089375}
   - component: {fileID: -1796729543827731695}
   m_Layer: 0
   m_Name: Powerup_1
@@ -85,18 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6814559488966089375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814559488966089372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa85e1dd4c6898c428b8d17493ccf35b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-1796729543827731695
 BoxCollider2D:
   m_ObjectHideFlags: 0

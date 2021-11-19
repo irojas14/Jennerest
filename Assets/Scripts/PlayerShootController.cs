@@ -22,7 +22,9 @@ public class PlayerShootController : MonoBehaviour
     //Se importa el script del player
     [SerializeField]
     private PlayerController playerInput;
-    
+
+    //PowerUps variables
+    public int _BulletMultiplier = 2;
     
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,6 @@ public class PlayerShootController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         _shoot.x = _bulletSpawnReference.position.x;
         _shoot.y = _bulletSpawnReference.position.y;
         _shoot.z = _bulletSpawnReference.position.z;
@@ -53,5 +54,18 @@ public class PlayerShootController : MonoBehaviour
         }
 
         
+    }
+
+
+    public void BuffBullets()
+    {
+        _fireRate /= _BulletMultiplier;
+        StartCoroutine(BuffBulletsDownCoroutine());
+    }
+
+    IEnumerator BuffBulletsDownCoroutine()
+    {
+        yield return new WaitForSeconds(5.0f);
+        _fireRate *= _BulletMultiplier;
     }
 }

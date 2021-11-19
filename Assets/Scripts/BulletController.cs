@@ -5,8 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     //Velocidad de cada bala.
-    [SerializeField]
-    private float _speed = 8.0f;
+    public float _speed = 15.0f;
 
     //Variable que le asigna la cantidad de segundos que tendrá de vida cada bala
     [SerializeField]
@@ -42,4 +41,5 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
