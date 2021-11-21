@@ -346,6 +346,7 @@
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/PauseMenuController.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/PlayerDeadController.cs"
 "Assets/Scripts/PlayerShootController.cs"
 "Assets/Scripts/PowerUpController.cs"
 -langversion:8.0

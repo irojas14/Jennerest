@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -121,6 +122,8 @@ public class PlayerController : MonoBehaviour
         if (health < 1)
         {
             Destroy(gameObject);
+            //Se cambia de escena y aparece que el jugador perdió
+            SceneManager.LoadScene(2);
         }
         //ScoreManager.AddScore(scoreWorth);
     }

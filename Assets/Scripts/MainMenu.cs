@@ -6,9 +6,9 @@ public class MainMenu : MonoBehaviour
 {
     public void GameScene()
     {
-        SceneManager.LoadScene("SampleScene"); //cargamos escena juego
+        SceneManager.LoadScene("AlphaLevel"); //cargamos escena juego
     }
-    public void QuitGame () 
+    public void QuitGame() 
     {
         Application.Quit ();
         Debug.Log("Game is exiting");
