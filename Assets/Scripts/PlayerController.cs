@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
     public int health = 5;
     public int scoreWorth = 0;
 
+    //Hit Invulnerability
+    public float invulnTime = 2f;
+    float invulnTimer = 0;
+
     //Variable que usaremos en caso de aplicar animaciones
     //private bool Is_Player_Jumping = false;
     
@@ -49,7 +53,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        invulnTimer -= Time.deltaTime;
+        if (invulnTimer <= 0)
+        {
+            gameObject.layer = 6;
+        }
         Control_Player();
         Jump();
     }
@@ -117,9 +125,13 @@ public class PlayerController : MonoBehaviour
 
     public void Damage()
     {
+
         health -= 1;
+        invulnTimer = invulnTime;
+        gameObject.layer = 9;
         Debug.Log("La vida del player es: " + health);
-        if (health < 1)
+
+        if (health <= 0)
         {
             Destroy(gameObject);
             //Se cambia de escena y aparece que el jugador perdió
