@@ -77,11 +77,7 @@ public class PlayerController : MonoBehaviour
             transform.eulerAngles = new Vector2(0, 180);
             rotation = -1f;
         }
-        // Wea pa tepear 
-        else if(Input.GetKey(KeyCode.T))
-        {
-            pos=new Vector3(-15.5f,26f,0f); 
-        }
+
 
         else 
         {

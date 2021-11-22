@@ -19,7 +19,7 @@ TagManager:
   - Enemy
   - Powerup
   - Invulnerable
-  - 
+  - Doors
   - 
   - 
   - 
@@ -44,4 +44,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1250966467
+    locked: 0
+  - name: Doors
+    uniqueID: 1495615531
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 2924805141
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 903857821
+    locked: 0
+  - name: Player
+    uniqueID: 3077928781
     locked: 0

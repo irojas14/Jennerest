@@ -14,6 +14,7 @@ public class PlayerTP : MonoBehaviour
             if (currentTeleporter != null)
             {
                 transform.position  = currentTeleporter.GetComponent<Teleporter>().GetDestination().position;
+                
             }
         }
     }
