@@ -38,7 +38,10 @@ public class BulletController : MonoBehaviour
     {
         if(other.gameObject.layer != 8)
         {
-            Destroy(gameObject);
+            if(other.gameObject.layer != 10)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
