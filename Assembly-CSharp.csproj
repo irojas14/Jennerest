@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\CameraSmoothFollow.cs" />
      <Compile Include="Assets\Scripts\PlayerTP.cs" />
      <Compile Include="Assets\Scripts\PowerUpController.cs" />
+     <Compile Include="Assets\Scripts\UIController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Users/naxo_/Desktop/Proyectos Unity/2021.1.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

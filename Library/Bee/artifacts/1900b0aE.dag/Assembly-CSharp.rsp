@@ -352,6 +352,7 @@
 "Assets/Scripts/PlayerTP.cs"
 "Assets/Scripts/PowerUpController.cs"
 "Assets/Scripts/Teleporter.cs"
+"Assets/Scripts/UIController.cs"
 -langversion:8.0
 
 /deterministic

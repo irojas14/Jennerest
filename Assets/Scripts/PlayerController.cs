@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private float Jump_Height;
 
     //Player health
-    public int health = 5;
+    public int health = 6;
     public int scoreWorth = 0;
 
     //Hit Invulnerability
@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     //private bool Is_Player_Jumping = false;
     
     private Rigidbody2D _rigidBody;
+    private bool damageFlag = false;
 
     //PowerUps flags and variables
     [SerializeField] private float _speedMultiplier = 1.3f;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        damageFlag = false;
         invulnTimer -= Time.deltaTime;
         if (invulnTimer <= 0)
         {
@@ -138,6 +140,8 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
+        if(damageFlag) return;
+        damageFlag = true;
         if (other.gameObject.layer == 7)
         {
             Damage();
