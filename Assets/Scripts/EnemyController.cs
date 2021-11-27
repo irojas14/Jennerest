@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
 
-
     public int enemyHealth = 1;
+    private UIController _ui;
+    private bool enemyDeath = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _ui = GameObject.Find("UIManager").GetComponent<UIController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        enemyDeath=false;  
     }
 
 
@@ -24,15 +27,12 @@ public class EnemyController : MonoBehaviour
     {
         if(other.gameObject.layer == 6 && other.gameObject.tag == "Player")
         {
-
             PlayerController player = other.transform.GetComponent<PlayerController>();
-
             EnemyDamage();
             if (player != null)
             {
                 player.Damage();
             }
-
         }
 
         else if (other.gameObject.layer == 6 && other.gameObject.tag == "Bullet")
@@ -48,7 +48,16 @@ public class EnemyController : MonoBehaviour
 
         if(enemyHealth < 1)
         {
-            Destroy(this.gameObject);
-        }
+            if(enemyDeath==false)
+            {
+                Destroy(this.gameObject);
+                enemyDeath=true;
+                if(enemyDeath==true)
+                {
+                    _ui.updateEnemyCount();
+                }
+            }
+            
+        }  
     }
 }
