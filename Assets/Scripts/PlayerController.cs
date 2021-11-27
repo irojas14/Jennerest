@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public int scoreWorth = 0;
 
     //Hit Invulnerability
-    public float invulnTime = 2f;
+    public float invulnTime = 1f;
     float invulnTimer = 0;
 
     //Variable que usaremos en caso de aplicar animaciones
