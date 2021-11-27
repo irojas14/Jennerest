@@ -5,12 +5,21 @@ using UnityEngine;
 public class AIPatrol : MonoBehaviour
 {
 
+    // Enemy Movement and Player Detection
     public float walkSpeed = 2f;
     public bool patrolCheck;
     public float patrolTime = 2f;
     public float aggroRange = 10f;
     float patrolTimer;
     Transform playerTransform;
+
+    // Shooting variables
+
+    public GameObject bulletPrefab;
+    public float fireDelay = 0.5f;
+    float shootCooldown = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +38,7 @@ public class AIPatrol : MonoBehaviour
         }
         else
         {
+            shootCooldown -= Time.deltaTime;
             Aggro();
         }
     }
@@ -83,6 +93,7 @@ public class AIPatrol : MonoBehaviour
         }
         Vector3 pos = transform.position;
         direction.Normalize();
+        Shoot();
         // Flip sprite
         if (Mathf.Sign(direction.x) == Mathf.Sign(transform.localScale.x)){
             transform.localScale = new Vector2(transform.localScale.x *-1, transform.localScale.y);
@@ -91,4 +102,22 @@ public class AIPatrol : MonoBehaviour
         pos.x += Mathf.Abs(walkSpeed)*Time.deltaTime*direction.x;
         transform.position = pos;
     }
+    void Shoot()
+    {
+        if (shootCooldown <= 0)
+        {
+            shootCooldown = fireDelay;
+            Quaternion rot;
+            if (Mathf.Sign(transform.localScale.x) == 1)
+            {
+                rot = Quaternion.Euler(0,0,90);
+            }
+            else
+            {
+                rot = Quaternion.Euler(0,0,-90);
+            }
+            Instantiate(bulletPrefab, transform.position, rot);
+        }
+    }
+
 }
