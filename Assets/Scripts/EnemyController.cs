@@ -23,26 +23,21 @@ public class EnemyController : MonoBehaviour
     }
 
 
-     private void OnTriggerEnter2D(Collider2D other) 
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(other.gameObject.layer == 6 && other.gameObject.tag == "Player")
+        if(collision.gameObject.layer == 6 && collision.gameObject.tag == "Player")
         {
-            PlayerController player = other.transform.GetComponent<PlayerController>();
             EnemyDamage();
-            if (player != null)
-            {
-                player.Damage();
-            }
         }
 
-        else if (other.gameObject.layer == 6 && other.gameObject.tag == "Bullet")
+        else if (collision.gameObject.layer == 6 && collision.gameObject.tag == "Bullet")
         {
             EnemyDamage();
         }
 
     }
 
-    private void EnemyDamage()
+    public void EnemyDamage()
     {
         enemyHealth-=1;
 

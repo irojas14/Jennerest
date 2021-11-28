@@ -36,12 +36,18 @@ public class BulletController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.layer != 8)
+        if(other.gameObject.layer == 7)
         {
-            if(other.gameObject.layer != 10)
+            if (other.gameObject.tag == "Enemy")
             {
-                Destroy(gameObject);
+                EnemyController enemy = other.GetComponent<EnemyController>();
+                enemy.EnemyDamage();
             }
+            Destroy(gameObject);
+        }
+        if(other.gameObject.layer == 0)
+        {
+            Destroy(gameObject);
         }
     }
 

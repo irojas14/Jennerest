@@ -19,6 +19,8 @@ public class AIPatrol : MonoBehaviour
     public float fireDelay = 0.5f;
     float shootCooldown = 0;
 
+    GameObject playerObject;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +82,10 @@ public class AIPatrol : MonoBehaviour
             }
            
         }
+        else
+        {
+            Debug.Log("Player is null");
+        }
     }
     void Aggro()
     {
@@ -107,16 +113,9 @@ public class AIPatrol : MonoBehaviour
         if (shootCooldown <= 0)
         {
             shootCooldown = fireDelay;
-            Quaternion rot;
-            if (Mathf.Sign(transform.localScale.x) == 1)
-            {
-                rot = Quaternion.Euler(0,0,90);
-            }
-            else
-            {
-                rot = Quaternion.Euler(0,0,-90);
-            }
-            Instantiate(bulletPrefab, transform.position, rot);
+            Vector3 relativePos = playerTransform.position - transform.position;
+            float angle = Mathf.Atan2(relativePos.y,relativePos.x) * Mathf.Rad2Deg;
+            Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0,0,angle - 90));
         }
     }
 

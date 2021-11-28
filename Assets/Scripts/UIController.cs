@@ -43,21 +43,21 @@ public class UIController : MonoBehaviour
 
     public void UpdateLives()
     {
-        if(_player.health == 6)
+        if(_player.health == 3)
         {
             _LivesImg[0].enabled = true;
             _LivesImg[1].enabled = true;
             _LivesImg[2].enabled = true;
         }
 
-        else if(_player.health == 4)
+        else if(_player.health == 2)
         {
             _LivesImg[0].enabled = true;
             _LivesImg[1].enabled = true;
             _LivesImg[2].enabled = false;
         }
 
-        else if(_player.health == 2)
+        else if(_player.health == 1)
         {
             _LivesImg[0].enabled = true;
             _LivesImg[1].enabled = false;

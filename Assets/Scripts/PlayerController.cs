@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private float Jump_Height;
 
     //Player health
-    public int health = 6;
+    public int health = 3;
     public int scoreWorth = 0;
 
     //Hit Invulnerability
@@ -54,11 +54,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        damageFlag = false;
         invulnTimer -= Time.deltaTime;
         if (invulnTimer <= 0)
         {
             gameObject.layer = 6;
+            damageFlag = false;
         }
         Control_Player();
         Jump();
@@ -128,7 +128,6 @@ public class PlayerController : MonoBehaviour
         invulnTimer = invulnTime;
         gameObject.layer = 9;
         Debug.Log("La vida del player es: " + health);
-
         if (health <= 0)
         {
             Destroy(gameObject);
@@ -138,11 +137,11 @@ public class PlayerController : MonoBehaviour
         //ScoreManager.AddScore(scoreWorth);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) 
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(damageFlag) return;
         damageFlag = true;
-        if (other.gameObject.layer == 7)
+        if (collision.gameObject.layer == 7)
         {
             Damage();
         }

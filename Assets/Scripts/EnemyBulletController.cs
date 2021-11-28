@@ -36,12 +36,19 @@ public class EnemyBulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.layer != 6)
+        if(other.gameObject.layer == 6)
         {
-            if(other.gameObject.layer != 10)
+            if (other.gameObject.tag == "Player")
             {
-                Destroy(gameObject);
+                
+                PlayerController player = other.GetComponent<PlayerController>();
+                player.Damage();
             }
+            Destroy(gameObject);
+        }
+        if(other.gameObject.layer == 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
