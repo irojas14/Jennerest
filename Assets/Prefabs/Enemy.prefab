@@ -275,4 +275,4 @@ MonoBehaviour:
   patrolTime: 1.5
   aggroRange: 10
   bulletPrefab: {fileID: 2736373581893251192, guid: f876c937c40539b48a22cae453b65451, type: 3}
-  fireDelay: 0.5
+  fireDelay: 1
