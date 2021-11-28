@@ -51,7 +51,7 @@ TagManager:
   - name: Doors
     uniqueID: 1495615531
     locked: 0
-  - name: New Layer 3
+  - name: PowerUps
     uniqueID: 2924805141
     locked: 0
   - name: Enemy
