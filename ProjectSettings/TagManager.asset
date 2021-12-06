@@ -20,7 +20,7 @@ TagManager:
   - Powerup
   - Invulnerable
   - Doors
-  - 
+  - World
   - 
   - 
   - 
@@ -59,4 +59,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3077928781
+    locked: 0
+  - name: World
+    uniqueID: 319802761
     locked: 0

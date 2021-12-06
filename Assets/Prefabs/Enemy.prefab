@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147890615187102906}
   m_LocalRotation: {x: -0.0000363274, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.634, y: 0.043, z: -0}
+  m_LocalPosition: {x: -0.355, y: -0.066, z: 0}
   m_LocalScale: {x: 1.24855, y: 1.09915, z: 1}
   m_Children: []
   m_Father: {fileID: 8304876722739293674}
@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8304876722739293673}
   - component: {fileID: 8304876722739293672}
   - component: {fileID: 8304876722739293676}
+  - component: {fileID: 7898079197435846751}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -111,9 +112,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8304876722739293675}
-  m_LocalRotation: {x: 0.0000363274, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.000034922778, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.8057773, y: -0.18, z: 0.10076594}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.7082, y: 2.7082, z: 1.3541}
   m_Children:
   - {fileID: 5158616899329618546}
   m_Father: {fileID: 0}
@@ -160,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 903857821
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aab5410fd5398e747ac18c0ef91f861f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76da63ddce1857c46a202e635855a6a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -184,18 +185,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07362747, y: -0.053258657}
+  m_Offset: {x: -0.015547067, y: -0.007898301}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 0.5, y: 0.87}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8895645, y: 1.2023828}
+  m_Size: {x: 0.644332, y: 0.90512234}
   m_EdgeRadius: 0
 --- !u!50 &8304876722739293673
 Rigidbody2D:
@@ -249,3 +250,22 @@ MonoBehaviour:
   aggroRange: 10
   bulletPrefab: {fileID: 2736373581893251192, guid: f876c937c40539b48a22cae453b65451, type: 3}
   fireDelay: 1
+--- !u!95 &7898079197435846751
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304876722739293675}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f3d1ccaca7a5aba49b887c8833bbd77e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
