@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 public class UIController : MonoBehaviour
 {
 
-    [SerializeField]
-    private Image [] _LivesImg;
+    [SerializeField] private Image [] _LivesImg;
     
-    [SerializeField]
-    private Sprite[] _liveSprites;
+    [SerializeField] private Sprite[] _liveSprites;
 
-    [SerializeField]
-    private Text _enemysLeft;
+    [SerializeField] private Text _enemysLeft;
 
-    [SerializeField]
-    private GameObject[] _enemys;
+    [SerializeField] private Text _finishMisionText;
 
+    [SerializeField] private GameObject[] _enemys;
+
+    [SerializeField] private GameObject _finishLevel;
+    
     private PlayerController _player;
 
     public int _enemysCount;
@@ -28,6 +28,8 @@ public class UIController : MonoBehaviour
         _enemysCount = _enemys.Length;
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
         _enemysLeft.text = "Remaining Enemys: " + _enemysCount.ToString();
+        _finishLevel.SetActive(false);
+        _finishMisionText.enabled = false;
     }
 
 
@@ -35,8 +37,9 @@ public class UIController : MonoBehaviour
     {
         UpdateLives();
         if(_enemysCount==0)
-        {
-            SceneManager.LoadScene("WinScene");
+        {  
+            finishMissionText();
+             _finishLevel.SetActive(true);
         }    
     }
     // Start is called before the first frame update
@@ -76,5 +79,11 @@ public class UIController : MonoBehaviour
     {
         _enemysCount--;
         _enemysLeft.text = "Remaining Enemys: " + _enemysCount.ToString();
+    }
+
+    public void finishMissionText()
+    {
+        _enemysLeft.enabled = false;
+        _finishMisionText.enabled = true;   
     }
 }

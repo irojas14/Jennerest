@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\AIPatrol.cs" />
+     <Compile Include="Assets\Scripts\EnemyBulletController.cs" />
      <Compile Include="Assets\Scripts\PlayerDeadController.cs" />
      <Compile Include="Assets\Scripts\PlayerShootController.cs" />
      <Compile Include="Assets\Scripts\Teleporter.cs" />
@@ -47,8 +48,10 @@
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\CameraSmoothFollow.cs" />
+     <Compile Include="Assets\Scripts\EnemyShootController.cs" />
      <Compile Include="Assets\Scripts\PlayerTP.cs" />
      <Compile Include="Assets\Scripts\PowerUpController.cs" />
+     <Compile Include="Assets\Scripts\LevelFinisherController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Users/naxo_/Desktop/Proyectos Unity/2021.1.20f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
