@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    
+
+    public Animator animator;   
     public float rotation;
     
     private float playerCanFire;
@@ -62,6 +63,16 @@ public class PlayerController : MonoBehaviour
         }
         Control_Player();
         Jump();
+        
+        if (Mathf.Abs(Input.GetAxis("Horizontal"))>0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
+
     }
 
     public void Control_Player()  
@@ -86,7 +97,6 @@ public class PlayerController : MonoBehaviour
             rotation = -1f;
         }
         transform.position = pos;
-          
         /* 
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -118,6 +128,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump") && Mathf.Abs(_rigidBody.velocity.y) < 0.001f)
         {
             _rigidBody.AddForce(new Vector2(0, Jump_Height), ForceMode2D.Impulse);
+            
         }
     }
 
