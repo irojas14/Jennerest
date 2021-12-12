@@ -36,6 +36,15 @@ public class Player_continue : MonoBehaviour
      void Crawl()
      {
         
-        transform.position += new Vector3(0.01f,0.0f,0.0f)+ movementVector * Time.deltaTime;
+        transform.position += new Vector3(0.05f,0.0f,0.0f)+ movementVector * Time.deltaTime;
      }
+
+
+     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("SUBETE AL JENNEREST Shinji!");
+        }
+    }
 }

@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
     private bool damageFlag = false;
 
     //PowerUps flags and variables
-    [SerializeField] private float _speedMultiplier = 1.3f;
-    [SerializeField] private float _jumpHeightMultiplier = 1.3f;
+    [SerializeField] private float _speedMultiplier = 1.7f;
+    [SerializeField] private float _jumpHeightMultiplier = 1.7f;
 
         
     void Start()
