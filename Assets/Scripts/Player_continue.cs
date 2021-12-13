@@ -1,34 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_continue : MonoBehaviour
 {
     public float _crawlSpeed = 10.0f;
     private Vector3 movementVector = Vector3.zero;
     public Transform target;
+    public Animator animator;
 
-    public Animator animator;   
+    [SerializeField] private Text _zText;
+    [SerializeField] private Text _xText;
+    [SerializeField] private Text _eText;
 
+    private bool isZPressed = false;   
 
     // Start is called before the first frame update
     void Start()
     {
         movementVector = (target.position - transform.position).normalized * _crawlSpeed;
+        _zText.enabled = true;
+        _xText.enabled = false;
+        _eText.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Z))
-        {
-            Crawl();
-            animator.SetBool("Mashing", true);
+        {   
+            if(isZPressed == false)
+            {
+                Crawl();
+                animator.SetBool("Mashing", true);
+                _zText.enabled = false;
+                _xText.enabled = true;
+                isZPressed = true;
+
+            }
         }
         if(Input.GetKeyDown(KeyCode.X))
         {
-            Crawl();
-            animator.SetBool("Mashing", true);
+            if(isZPressed == true)
+            {
+                Crawl();
+                animator.SetBool("Mashing", true);
+                _zText.enabled = true;
+                _xText.enabled = false;
+                isZPressed = false;
+
+            }
         }
     }
 
@@ -44,6 +66,9 @@ public class Player_continue : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            _eText.enabled = true;
+            _zText.enabled = false;
+            _xText.enabled = false;
             Debug.Log("SUBETE AL JENNEREST Shinji!");
         }
     }

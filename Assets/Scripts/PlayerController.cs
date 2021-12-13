@@ -11,9 +11,11 @@ public class PlayerController : MonoBehaviour
     
     private float playerCanFire;
 
+    /*
     //Delegate to kill player
     public delegate void Kill_Player();
     public Kill_Player Death;
+    */
 
     //GameObjects
     public GameObject Bullet_Boss;
@@ -21,12 +23,14 @@ public class PlayerController : MonoBehaviour
     public GameObject GunPowerUp;
 
     //Player Momenet Speed
-    [SerializeField]
-    private float MovementSpeed;
+    [SerializeField] private float MovementSpeed;
 
     //Player jump Height
-    [SerializeField]
-    private float Jump_Height;
+    [SerializeField] private float Jump_Height;
+
+    //PowerUps flags and variables
+    [SerializeField] private float _speedMultiplier = 1.7f;
+    [SerializeField] private float _jumpHeightMultiplier = 1.7f;
 
     //Player health
     public int health = 3;
@@ -35,16 +39,11 @@ public class PlayerController : MonoBehaviour
     //Hit Invulnerability
     public float invulnTime = 1f;
     float invulnTimer = 0;
-
-    //Variable que usaremos en caso de aplicar animaciones
-    //private bool Is_Player_Jumping = false;
     
     private Rigidbody2D _rigidBody;
     private bool damageFlag = false;
+    private bool playerHasDeadBefore = false;
 
-    //PowerUps flags and variables
-    [SerializeField] private float _speedMultiplier = 1.7f;
-    [SerializeField] private float _jumpHeightMultiplier = 1.7f;
 
         
     void Start()
@@ -97,27 +96,6 @@ public class PlayerController : MonoBehaviour
             rotation = -1f;
         }
         transform.position = pos;
-        /* 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            //Sprite Rotation
-            transform.eulerAngles = new Vector2(0,0);
-            transform.Translate(Vector2.right * MovementSpeed * Time.deltaTime);
-            rotation = 1f;
-        }
-
-        else if(Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.eulerAngles = new Vector2(0, 180);
-            transform.Translate(Vector2.right * MovementSpeed * Time.deltaTime);
-            rotation = -1f;
-        }
-
-        else
-        {
-            rotation = 0;
-        } */
-
 
     }
 
@@ -141,9 +119,20 @@ public class PlayerController : MonoBehaviour
         Debug.Log("La vida del player es: " + health);
         if (health <= 0)
         {
-            Destroy(gameObject);
-            //Se cambia de escena y aparece que el jugador perdió
-            SceneManager.LoadScene(2);
+
+            if(playerHasDeadBefore == false)
+            {
+                playerHasDeadBefore = true;
+                SceneManager.LoadScene("NotDeadYet");
+            }
+
+            else
+            {
+                Destroy(gameObject);
+                //Se cambia de escena y aparece que el jugador perdió
+                SceneManager.LoadScene("PlayerDead");
+            }
+
         }
         //ScoreManager.AddScore(scoreWorth);
     }

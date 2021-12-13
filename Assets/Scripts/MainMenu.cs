@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void GameScene()
     {
-        SceneManager.LoadScene("AlphaLevel"); //cargamos escena juego
+        SceneManager.LoadScene("Tutorial"); //cargamos escena juego
     }
     public void QuitGame() 
     {

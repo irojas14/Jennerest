@@ -13,9 +13,14 @@ public class LevelFinisherController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (isPlayerTouchingMe == true)
+            if (isPlayerTouchingMe == true && SceneManager.GetActiveScene().name != "Tutorial")
             {
                 SceneManager.LoadScene("WinScene");
+            }
+
+            else if(isPlayerTouchingMe == true && SceneManager.GetActiveScene().name == "Tutorial")
+            {
+                SceneManager.LoadScene("LoadAlphaLevel");
             }
         }
     }
