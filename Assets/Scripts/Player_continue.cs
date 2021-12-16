@@ -7,19 +7,25 @@ public class Player_continue : MonoBehaviour
 {
     public float _crawlSpeed = 10.0f;
     private Vector3 movementVector = Vector3.zero;
-    public Transform target;
+    //public Transform target;
     public Animator animator;
 
     [SerializeField] private Text _zText;
     [SerializeField] private Text _xText;
     [SerializeField] private Text _eText;
 
-    private bool isZPressed = false;   
+    private bool isZPressed = false;
+    private bool playerWillComeBack = false;
+    private PlayerController _playerController;
+    private SwapContinueController _swap;   
 
     // Start is called before the first frame update
     void Start()
     {
-        movementVector = (target.position - transform.position).normalized * _crawlSpeed;
+        //movementVector = (target.position - transform.position).normalized * _crawlSpeed;
+        _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        _swap = GameObject.Find("SwapContinueManager").GetComponent<SwapContinueController>();
+
         _zText.enabled = true;
         _xText.enabled = false;
         _eText.enabled = false;
@@ -52,6 +58,13 @@ public class Player_continue : MonoBehaviour
 
             }
         }
+        
+        if(Input.GetKeyDown(KeyCode.E) && playerWillComeBack)
+        {
+            //_swap.playerIsComeBack = true;
+            _playerController.playerContinueInstance = false;
+            _playerController.PlayerComeBack();
+        }
     }
 
 
@@ -64,12 +77,13 @@ public class Player_continue : MonoBehaviour
 
      private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("PlayerContinue"))
         {
             _eText.enabled = true;
             _zText.enabled = false;
             _xText.enabled = false;
-            Debug.Log("SUBETE AL JENNEREST Shinji!");
+            playerWillComeBack = true;
+
         }
     }
 }

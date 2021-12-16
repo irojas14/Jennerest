@@ -43,12 +43,16 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidBody;
     private bool damageFlag = false;
     private bool playerHasDeadBefore = false;
+    public bool playerContinueInstance = false;
+
+    private SwapContinueController _swap;
 
 
         
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
+        _swap = GameObject.Find("SwapContinueManager").GetComponent<SwapContinueController>();
     }
 
     // Update is called once per frame
@@ -123,7 +127,7 @@ public class PlayerController : MonoBehaviour
             if(playerHasDeadBefore == false)
             {
                 playerHasDeadBefore = true;
-                SceneManager.LoadScene("NotDeadYet");
+                playerContinueInstance = true;
             }
 
             else
@@ -169,6 +173,12 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         MovementSpeed /= _speedMultiplier;
+    }
+
+    public void PlayerComeBack()
+    {
+        health = 3;
+        invulnTimer = invulnTime;
     }
 
     

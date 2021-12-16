@@ -82,11 +82,8 @@ public class AIPatrol : MonoBehaviour
             }
            
         }
-        else
-        {
-            Debug.Log("Player is null");
-        }
     }
+    
     void Aggro()
     {
         // Get direction

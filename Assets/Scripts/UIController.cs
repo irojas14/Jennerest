@@ -8,15 +8,10 @@ public class UIController : MonoBehaviour
 {
 
     [SerializeField] private Image [] _LivesImg;
-    
     [SerializeField] private Sprite[] _liveSprites;
-
     [SerializeField] private Text _enemysLeft;
-
     [SerializeField] private Text _finishMisionText;
-
     [SerializeField] private GameObject[] _enemys;
-
     [SerializeField] private GameObject _finishLevel;
     
     private PlayerController _player;

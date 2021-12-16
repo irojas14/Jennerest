@@ -355,6 +355,7 @@
 "Assets/Scripts/PlayerTP.cs"
 "Assets/Scripts/Player_continue.cs"
 "Assets/Scripts/PowerUpController.cs"
+"Assets/Scripts/SwapContinueController.cs"
 "Assets/Scripts/Teleporter.cs"
 "Assets/Scripts/UIController.cs"
 -langversion:8.0
