@@ -46,6 +46,8 @@ public class UIController : MonoBehaviour
             _LivesImg[0].enabled = true;
             _LivesImg[1].enabled = true;
             _LivesImg[2].enabled = true;
+
+            _enemysLeft.enabled = true;
         }
 
         else if(_player.health == 2)
@@ -66,7 +68,10 @@ public class UIController : MonoBehaviour
         {
             _LivesImg[0].enabled = false;
             _LivesImg[1].enabled = false;
-            _LivesImg[2].enabled = false;          
+            _LivesImg[2].enabled = false;
+            
+            _enemysLeft.enabled = false;
+                 
         }
     }
 
