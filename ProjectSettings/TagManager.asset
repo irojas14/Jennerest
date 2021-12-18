@@ -23,7 +23,7 @@ TagManager:
   - Doors
   - World
   - PlayerContinue
-  - 
+  - Item
   - 
   - 
   - 
@@ -57,6 +57,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 903857821
+    locked: 0
+  - name: Item
+    uniqueID: 3097691117
     locked: 0
   - name: Player
     uniqueID: 3077928781

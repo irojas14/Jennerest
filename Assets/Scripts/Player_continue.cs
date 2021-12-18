@@ -17,7 +17,9 @@ public class Player_continue : MonoBehaviour
     private bool isZPressed = false;
     private bool playerWillComeBack = false;
     private PlayerController _playerController;
-    private SwapContinueController _swap;   
+    private SwapContinueController _swap;  
+    private UIController _ui;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,7 @@ public class Player_continue : MonoBehaviour
         //movementVector = (target.position - transform.position).normalized * _crawlSpeed;
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         _swap = GameObject.Find("SwapContinueManager").GetComponent<SwapContinueController>();
+        _ui = GameObject.Find("UIManager").GetComponent<UIController>();
 
         _zText.enabled = true;
         _xText.enabled = false;

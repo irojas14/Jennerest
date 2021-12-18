@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/AlphaLevel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/AlphaLevel2.unity
+    guid: decbaf07492fd8e4fa65d0b4942a790f
+  - enabled: 1
     path: Assets/Scenes/NotDeadYet.unity
     guid: c0294db21c040df4aa8727c2bdc66701
   - enabled: 1

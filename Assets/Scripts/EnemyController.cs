@@ -51,7 +51,7 @@ public class EnemyController : MonoBehaviour
             {
                 Destroy(this.gameObject);
                 enemyDeath=true;
-                if(enemyDeath==true && SceneManager.GetActiveScene().name != "Tutorial")
+                if(enemyDeath==true && SceneManager.GetActiveScene().name == "AlphaLevel")
                 {
                     _ui.updateEnemyCount();
                 }

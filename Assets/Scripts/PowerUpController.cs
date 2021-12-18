@@ -23,18 +23,14 @@ public class PowerUpController : MonoBehaviour
                 {
                     case 0:
                         player.HigherJump();
-                        Debug.Log("Se activa el powerup de saltar más");
                         break;
                     case 1:
                         bullet.BuffBullets();
-                        Debug.Log("Se activa el powerup de disparar más");
                         break;
                     case 2:
                         player.FastMovement();
-                        Debug.Log("Se activa el powerup de correr más");
                         break;
                     default:
-                        Debug.Log("Valor Default");
                         break;
                 }
             }

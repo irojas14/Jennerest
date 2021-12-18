@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 128370413}
   - component: {fileID: 128370412}
   m_Layer: 5
-  m_Name: EnemysLeftText
+  m_Name: MissionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3450,8 +3450,7 @@ MonoBehaviour:
   - {fileID: 2033240049}
   - {fileID: 1656810918}
   - {fileID: 742003587}
-  _liveSprites: []
-  _enemysLeft: {fileID: 128370412}
+  _mission: {fileID: 128370412}
   _finishMisionText: {fileID: 580661449}
   _enemys:
   - {fileID: 964369416}
@@ -3464,8 +3463,11 @@ MonoBehaviour:
   - {fileID: 209457660}
   - {fileID: 862397368}
   - {fileID: 2051983725}
+  _items: []
   _finishLevel: {fileID: 1156153858}
+  _livesText: {fileID: 1171445592}
   _enemysCount: 0
+  _itemsCount: 0
 --- !u!1 &926644683
 GameObject:
   m_ObjectHideFlags: 0

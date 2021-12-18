@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class CameraSmoothFollow : MonoBehaviour
 {
     public Transform target;
@@ -17,15 +19,20 @@ public class CameraSmoothFollow : MonoBehaviour
 
     void Update()
     {
-        if(_playerController.playerContinueInstance)
+        if (SceneManager.GetActiveScene().name != "Tutorial")
         {
-            target = playerContinue.transform;
+            if(_playerController.playerContinueInstance)
+            {
+                target = playerContinue.transform;
+            }
+
+            else
+            {
+                target = player.transform;
+            }
         }
 
-        else
-        {
-            target = player.transform;
-        }
+        
     }
 
     void FixedUpdate()

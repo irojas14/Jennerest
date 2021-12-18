@@ -2,27 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class UIController : MonoBehaviour
 {
 
     [SerializeField] private Image [] _LivesImg;
-    [SerializeField] private Sprite[] _liveSprites;
-    [SerializeField] private Text _enemysLeft;
-    [SerializeField] private Text _finishMisionText;
+    [SerializeField] private Text _mission;
     [SerializeField] private GameObject[] _enemys;
+    [SerializeField] private GameObject[] _items;
     [SerializeField] private GameObject _finishLevel;
+    [SerializeField] private Text _livesText;
     
     private PlayerController _player;
+    public Text _finishMisionText;
 
     public int _enemysCount;
+    public int _itemsCount;
     
     void Start() 
     {
-        _enemysCount = _enemys.Length;
         _player = GameObject.Find("Player").GetComponent<PlayerController>();
-        _enemysLeft.text = "Remaining Enemys: " + _enemysCount.ToString();
+        if(SceneManager.GetActiveScene().name == "AlphaLevel")
+        {
+            _enemysCount = _enemys.Length;
+            _mission.text = "Remaining Enemys: " + _enemysCount.ToString();
+        }
+
+        else if(SceneManager.GetActiveScene().name == "AlphaLevel2")
+        {
+            _itemsCount = _items.Length;
+            _mission.text = "Remaining Items: " + _itemsCount.ToString();
+        }
         _finishLevel.SetActive(false);
         _finishMisionText.enabled = false;
     }
@@ -31,11 +43,26 @@ public class UIController : MonoBehaviour
     void Update() 
     {
         UpdateLives();
-        if(_enemysCount==0)
-        {  
-            finishMissionText();
-             _finishLevel.SetActive(true);
-        }    
+
+        if(SceneManager.GetActiveScene().name == "AlphaLevel")
+        {
+            if(_enemysCount==0)
+            {  
+                finishMissionText();
+                _finishLevel.SetActive(true);
+            }    
+        }
+
+        else if(SceneManager.GetActiveScene().name == "AlphaLevel2")
+        {
+            if(_itemsCount==0)
+            {
+                finishMissionText();
+                _finishLevel.SetActive(true);
+            }
+        }
+
+
     }
     // Start is called before the first frame update
 
@@ -47,7 +74,8 @@ public class UIController : MonoBehaviour
             _LivesImg[1].enabled = true;
             _LivesImg[2].enabled = true;
 
-            _enemysLeft.enabled = true;
+            _livesText.enabled = true;
+            _mission.enabled = true;
         }
 
         else if(_player.health == 2)
@@ -55,6 +83,11 @@ public class UIController : MonoBehaviour
             _LivesImg[0].enabled = true;
             _LivesImg[1].enabled = true;
             _LivesImg[2].enabled = false;
+
+            _mission.enabled = true;
+            _livesText.enabled = true;
+
+
         }
 
         else if(_player.health == 1)
@@ -62,6 +95,9 @@ public class UIController : MonoBehaviour
             _LivesImg[0].enabled = true;
             _LivesImg[1].enabled = false;
             _LivesImg[2].enabled = false;
+            
+            _mission.enabled = true;
+            _livesText.enabled = true;
         }
 
         else
@@ -70,20 +106,29 @@ public class UIController : MonoBehaviour
             _LivesImg[1].enabled = false;
             _LivesImg[2].enabled = false;
             
-            _enemysLeft.enabled = false;
-                 
+            _mission.enabled = false;
+            _livesText.enabled = false;
+                
         }
+
     }
 
     public void updateEnemyCount()
     {
         _enemysCount--;
-        _enemysLeft.text = "Remaining Enemys: " + _enemysCount.ToString();
+        _mission.text = "Remaining Enemys: " + _enemysCount.ToString();
+    }
+
+    public void UpdateItemsCount()
+    {
+        _itemsCount--;
+        _mission.text = "Items Count: " + _itemsCount.ToString();
     }
 
     public void finishMissionText()
     {
-        _enemysLeft.enabled = false;
+        _mission.enabled = false;
         _finishMisionText.enabled = true;   
     }
+
 }

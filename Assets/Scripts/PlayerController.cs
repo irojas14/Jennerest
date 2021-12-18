@@ -52,7 +52,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
-        _swap = GameObject.Find("SwapContinueManager").GetComponent<SwapContinueController>();
+        if (SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            _swap = GameObject.Find("SwapContinueManager").GetComponent<SwapContinueController>();
+        }
     }
 
     // Update is called once per frame
