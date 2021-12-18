@@ -2916,14 +2916,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6486972216391868620, guid: e303aabc501e01a45af263b2da836dab, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.689
-      objectReference: {fileID: 0}
-    - target: {fileID: 6486972216391868620, guid: e303aabc501e01a45af263b2da836dab, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.03
-      objectReference: {fileID: 0}
     - target: {fileID: 6486972217815480743, guid: e303aabc501e01a45af263b2da836dab, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2967,14 +2959,6 @@ PrefabInstance:
     - target: {fileID: 6486972217815480743, guid: e303aabc501e01a45af263b2da836dab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6486972217815480747, guid: e303aabc501e01a45af263b2da836dab, type: 3}
-      propertyPath: Jump_Height
-      value: 31.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 6486972217815480747, guid: e303aabc501e01a45af263b2da836dab, type: 3}
-      propertyPath: _jumpHeightMultiplier
-      value: 1.9
       objectReference: {fileID: 0}
     - target: {fileID: 6486972217815480748, guid: e303aabc501e01a45af263b2da836dab, type: 3}
       propertyPath: m_Name
@@ -3285,8 +3269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 174955577}
-  smoothSpeed: 0.21
   offset: {x: 0, y: 1.66, z: -1.64}
+  smoothSpeed: 0.21
+  playerContinue: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1001 &1627087085
 PrefabInstance:
   m_ObjectHideFlags: 0

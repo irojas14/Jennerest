@@ -15,7 +15,7 @@ public class LevelFinisherController : MonoBehaviour
         {
             if (isPlayerTouchingMe == true && SceneManager.GetActiveScene().name == "AlphaLevel")
             {
-                SceneManager.LoadScene("AlphaLevel2");
+                SceneManager.LoadScene("LoadAlphaLevel2");
             }
 
             else if(isPlayerTouchingMe == true && SceneManager.GetActiveScene().name == "AlphaLevel2")
