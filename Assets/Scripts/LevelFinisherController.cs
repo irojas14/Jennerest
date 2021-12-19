@@ -54,7 +54,7 @@ public class LevelFinisherController : MonoBehaviour
 
         otherAnimator.SetBool("Trigger",true) ;
 
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(3f);
 
         SceneManager.LoadScene(new_Scene);
 
