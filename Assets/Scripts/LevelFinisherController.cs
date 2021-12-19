@@ -7,31 +7,59 @@ public class LevelFinisherController : MonoBehaviour
 {
 
     private bool isPlayerTouchingMe = false;
+    public GameObject otherObject;
+    Animator otherAnimator;
+    string new_Scene;
+    void Awake ()
+    {
+         otherAnimator = otherObject.GetComponent<Animator> ();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+
             if (isPlayerTouchingMe == true && SceneManager.GetActiveScene().name == "AlphaLevel")
             {
-                SceneManager.LoadScene("LoadAlphaLevel2");
+                new_Scene ="LoadAlphaLevel2";
+                StartCoroutine(Fade());
+         
+               // SceneManager.LoadScene("LoadAlphaLevel2");
             }
 
             else if(isPlayerTouchingMe == true && SceneManager.GetActiveScene().name == "AlphaLevel2")
             {
-                SceneManager.LoadScene("WinScene");
+                new_Scene ="WinScene";
+                StartCoroutine(Fade());
+               
+                //SceneManager.LoadScene("WinScene");
             }
 
             else if(isPlayerTouchingMe == true && SceneManager.GetActiveScene().name == "Tutorial")
             {
-                SceneManager.LoadScene("LoadAlphaLevel");
+                new_Scene = "LoadAlphaLevel";
+                StartCoroutine(Fade());
+                //SceneManager.LoadScene("LoadAlphaLevel");
             }
 
+            
         
         }
     }
+    private IEnumerator Fade()
+    {
 
+        otherAnimator.SetBool("Trigger",true) ;
+
+        yield return new WaitForSeconds(1.4f);
+
+        SceneManager.LoadScene(new_Scene);
+
+    }
+    
     // Importante que las puertas tengan el tag "Teleporter"
     private void OnTriggerEnter2D(Collider2D collision)
     {
