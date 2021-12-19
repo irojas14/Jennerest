@@ -2755,6 +2755,10 @@ MonoBehaviour:
   _player: {fileID: 6486972216915174000}
   _playerContinue: {fileID: 1983850391}
   _playerContinueTexts: {fileID: 331492200}
+  otherObject: {fileID: 676218203}
+  smoothObject: {fileID: 519420028}
+  smooth: 0
+  _isFade: 0
 --- !u!4 &707860866
 Transform:
   m_ObjectHideFlags: 0
@@ -8290,6 +8294,10 @@ PrefabInstance:
     - target: {fileID: 6486972217815480743, guid: e303aabc501e01a45af263b2da836dab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6486972217815480747, guid: e303aabc501e01a45af263b2da836dab, type: 3}
+      propertyPath: invulnTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6486972217815480748, guid: e303aabc501e01a45af263b2da836dab, type: 3}
       propertyPath: m_Name

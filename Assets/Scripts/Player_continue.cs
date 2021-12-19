@@ -20,7 +20,6 @@ public class Player_continue : MonoBehaviour
     private SwapContinueController _swap;  
     private UIController _ui;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -89,4 +88,5 @@ public class Player_continue : MonoBehaviour
 
         }
     }
+
 }

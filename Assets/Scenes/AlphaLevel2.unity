@@ -4292,6 +4292,10 @@ MonoBehaviour:
   _player: {fileID: 1323074144}
   _playerContinue: {fileID: 44467649}
   _playerContinueTexts: {fileID: 1675984521}
+  otherObject: {fileID: 1246892237}
+  smoothObject: {fileID: 1848802400}
+  smooth: 0
+  _isFade: 0
 --- !u!1 &1121644173
 GameObject:
   m_ObjectHideFlags: 0

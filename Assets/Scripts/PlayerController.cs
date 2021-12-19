@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
     private SwapContinueController _swap;
 
 
-        
     void Start()
     {
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -184,7 +183,7 @@ public class PlayerController : MonoBehaviour
         invulnTimer = invulnTime;
     }
 
-    
+
 }
 
 

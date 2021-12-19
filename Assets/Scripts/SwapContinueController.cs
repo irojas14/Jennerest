@@ -11,7 +11,18 @@ public class SwapContinueController : MonoBehaviour
 
     private PlayerController _playerController;
     //public bool playerIsComeBack = false;
-    
+    public GameObject otherObject;
+    public GameObject smoothObject;
+    Animator otherAnimator;
+    CameraSmoothFollow smoothFloat;
+    public float smooth;
+    public bool _isFade=false;
+    void Awake ()
+    {
+         otherAnimator = otherObject.GetComponent<Animator> ();
+         smoothFloat = smoothObject.GetComponent<CameraSmoothFollow>();
+         
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +36,21 @@ public class SwapContinueController : MonoBehaviour
     {
         if(_playerController.playerContinueInstance == true)
         {
+            if (_isFade == false)
+            {
+                StartCoroutine(Fade());
+                _isFade = true;
+            }
             playerinGround();
         }
 
         else
         {
+            if (_isFade == true)
+            {
+                StartCoroutine(Fade());
+                _isFade = false;
+            }
             playerContinue();
         }
     }
@@ -48,5 +69,19 @@ public class SwapContinueController : MonoBehaviour
         _playerContinue.SetActive(false);
         _playerContinueTexts.SetActive(false);
     }
+    private IEnumerator Fade()
+    {   
+        smoothFloat.smoothSpeed = 0.0f;
 
+        otherAnimator.SetBool("Trigger",true) ;
+
+        yield return new WaitForSeconds(1.0f);
+
+        smoothFloat.smoothSpeed = 0.125f;
+
+        yield return new WaitForSeconds(0.5f);
+
+        otherAnimator.SetBool("Trigger",false) ;
+        
+    }
 }
