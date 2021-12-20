@@ -19,6 +19,9 @@ public class Player_continue : MonoBehaviour
     private PlayerController _playerController;
     private SwapContinueController _swap;  
     private UIController _ui;
+    private PauseMenuController _pause;
+
+
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,7 @@ public class Player_continue : MonoBehaviour
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
         _swap = GameObject.Find("SwapContinueManager").GetComponent<SwapContinueController>();
         _ui = GameObject.Find("UIManager").GetComponent<UIController>();
+        _pause = GameObject.Find("PauseMenuManager").GetComponent<PauseMenuController>();
 
         _zText.enabled = true;
         _xText.enabled = false;
@@ -36,43 +40,51 @@ public class Player_continue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {   
-            if(isZPressed == false)
-            {
-                Crawl();
-                animator.SetBool("Mashing", true);
-                _zText.enabled = false;
-                _xText.enabled = true;
-                isZPressed = true;
 
-            }
-        }
-        if(Input.GetKeyDown(KeyCode.X))
+        if(_pause.isPaused == false)
         {
-            if(isZPressed == true)
-            {
-                Crawl();
-                animator.SetBool("Mashing", true);
-                _zText.enabled = true;
-                _xText.enabled = false;
-                isZPressed = false;
+            if(Input.GetKeyDown(KeyCode.Z))
+            {   
+                if(isZPressed == false)
+                {
+                    Crawl();
+                    animator.SetBool("Mashing", true);
+                    _zText.enabled = false;
+                    _xText.enabled = true;
+                    isZPressed = true;
 
+                }
             }
+
+            if(Input.GetKeyDown(KeyCode.X))
+            {
+                if(isZPressed == true)
+                {
+                    Crawl();
+                    animator.SetBool("Mashing", true);
+                    _zText.enabled = true;
+                    _xText.enabled = false;
+                    isZPressed = false;
+
+                }
+            }
+            
+            if(Input.GetKeyDown(KeyCode.E) && playerWillComeBack)
+            {
+                //_swap.playerIsComeBack = true;
+                _eText.enabled = false;
+                _playerController.playerContinueInstance = false;
+                _playerController.PlayerComeBack();
+            }
+
         }
-        
-        if(Input.GetKeyDown(KeyCode.E) && playerWillComeBack)
-        {
-            //_swap.playerIsComeBack = true;
-            _playerController.playerContinueInstance = false;
-            _playerController.PlayerComeBack();
-        }
+
+
     }
 
 
      void Crawl()
      {
-        
         transform.position += new Vector3(0.05f,0.0f,0.0f)+ movementVector * Time.deltaTime;
      }
 

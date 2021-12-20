@@ -8,7 +8,6 @@ public class SwapContinueController : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _playerContinue;
     [SerializeField] private GameObject _playerContinueTexts;
-
     private PlayerController _playerController;
     //public bool playerIsComeBack = false;
     public GameObject otherObject;
@@ -17,6 +16,8 @@ public class SwapContinueController : MonoBehaviour
     CameraSmoothFollow smoothFloat;
     public float smooth;
     public bool _isFade=false;
+
+
     void Awake ()
     {
          otherAnimator = otherObject.GetComponent<Animator> ();
@@ -41,46 +42,51 @@ public class SwapContinueController : MonoBehaviour
                 StartCoroutine(Fade());
                 _isFade = true;
             }
-            playerinGround();
         }
 
         else
         {
             if (_isFade == true)
             {
-                StartCoroutine(Fade());
+                StartCoroutine(Fadent());
                 _isFade = false;
             }
-            playerContinue();
         }
     }
 
 
-    void playerinGround()
-    {
-        _player.SetActive(false);
-        _playerContinue.SetActive(true);
-        _playerContinueTexts.SetActive(true);
-    }
-
-    void playerContinue()
-    {
-        _player.SetActive(true);
-        _playerContinue.SetActive(false);
-        _playerContinueTexts.SetActive(false);
-    }
     private IEnumerator Fade()
     {   
         smoothFloat.smoothSpeed = 0.0f;
+        otherAnimator.SetBool("Trigger",true) ;
+        _playerContinue.SetActive(true);
 
+        yield return new WaitForSeconds(1.0f);
+
+        _player.SetActive(false);
+        smoothFloat.smoothSpeed = 0.125f;
+        _playerContinueTexts.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        otherAnimator.SetBool("Trigger",false) ;
+        
+    }
+
+    private IEnumerator Fadent()
+    {   
+        smoothFloat.smoothSpeed = 0.0f;
         otherAnimator.SetBool("Trigger",true) ;
 
         yield return new WaitForSeconds(1.0f);
 
+        _player.SetActive(true);
         smoothFloat.smoothSpeed = 0.125f;
 
         yield return new WaitForSeconds(0.5f);
 
+        _playerContinue.SetActive(false);
+        _playerContinueTexts.SetActive(false);
         otherAnimator.SetBool("Trigger",false) ;
         
     }

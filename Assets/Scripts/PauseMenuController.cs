@@ -5,12 +5,14 @@ using UnityEngine;
 public class PauseMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject PauseMenu;
-    private bool isPaused;
+    public bool isPaused;
+
+
     // Start is called before the first frame update
     void Start()
     {
         PauseMenu.SetActive(false);
-        isPaused = false;        
+        isPaused = false;      
     }
 
     

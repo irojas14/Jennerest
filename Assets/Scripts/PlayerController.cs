@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     public int scoreWorth = 0;
 
     //Hit Invulnerability
-    public float invulnTime = 1f;
+    public float invulnTime = 2f;
     float invulnTimer = 0;
     
     private Rigidbody2D _rigidBody;
@@ -45,12 +45,23 @@ public class PlayerController : MonoBehaviour
     private bool playerHasDeadBefore = false;
     public bool playerContinueInstance = false;
 
+    // EL color está buggeado pero cumple su función.
+    private Color playerDamage = new Color(220f,20f,60f, 1f);
+    private Color originalColor;
+    private Renderer playerRenderer;
+
     private SwapContinueController _swap;
+
+
 
 
     void Start()
     {
+
+        playerRenderer = this.gameObject.GetComponent<Renderer>();
+        originalColor = playerRenderer.material.color;
         _rigidBody = GetComponent<Rigidbody2D>();
+
         if (SceneManager.GetActiveScene().name != "Tutorial")
         {
             _swap = GameObject.Find("SwapContinueManager").GetComponent<SwapContinueController>();
@@ -121,6 +132,11 @@ public class PlayerController : MonoBehaviour
 
         health -= 1;
         invulnTimer = invulnTime;
+        if(health != 0)
+        {
+            StartCoroutine(Invulnerable());
+        }
+
         gameObject.layer = 9;
         Debug.Log("La vida del player es: " + health);
         if (health <= 0)
@@ -181,6 +197,13 @@ public class PlayerController : MonoBehaviour
     {
         health = 3;
         invulnTimer = invulnTime;
+    }
+
+    IEnumerator Invulnerable()
+    {
+        playerRenderer.material.color = playerDamage;
+        yield return new WaitForSeconds(2.0f);
+        playerRenderer.material.color = originalColor;
     }
 
 
