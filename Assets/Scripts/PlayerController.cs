@@ -131,11 +131,11 @@ public class PlayerController : MonoBehaviour
     {
 
         health -= 1;
-        invulnTimer = invulnTime;
         if(health != 0)
         {
             StartCoroutine(Invulnerable());
         }
+        invulnTimer = invulnTime;
 
         gameObject.layer = 9;
         Debug.Log("La vida del player es: " + health);
@@ -152,7 +152,15 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(gameObject);
                 //Se cambia de escena y aparece que el jugador perdió
-                SceneManager.LoadScene("PlayerDead");
+                if (SceneManager.GetActiveScene().name == "AlphaLevel")
+                {
+                    SceneManager.LoadScene("PlayerDead");
+                }
+
+                else if (SceneManager.GetActiveScene().name == "AlphaLevel2")
+                {
+                    SceneManager.LoadScene("PlayerDead2");
+                }
             }
 
         }
@@ -165,7 +173,10 @@ public class PlayerController : MonoBehaviour
         damageFlag = true;
         if (collision.gameObject.layer == 7)
         {
-            Damage();
+            if (SceneManager.GetActiveScene().name != "Tutorial")
+            {
+                Damage();
+            }
         }
     }
 

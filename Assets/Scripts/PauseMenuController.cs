@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
@@ -18,42 +19,34 @@ public class PauseMenuController : MonoBehaviour
     
     void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && isPaused == false)
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            openModal();
+            if(isPaused)
+            {
+                ResumeGame();
+
+            }
+
+            else
+            {
+                PauseGame();
+            }
         }
-
-        else if(Input.GetKeyDown(KeyCode.Escape) && isPaused == true)
-        {
-            closeModal();
-        }
-    }
-
-
-    public void openModal()
-    {
-        isPaused = true;
-        Debug.Log("Pausado.");
-        PauseMenu.SetActive(true);
-        PauseGame();
-    }
-
-    public void closeModal()
-    {
-        isPaused = false;
-        Debug.Log("Juegue.");
-        PauseMenu.SetActive(false);
-        ResumeGame();
     }
     
-    void PauseGame ()
+    void PauseGame()
     {
+        PauseMenu.SetActive(true);
         Time.timeScale = 0;
+        isPaused = true;
+        
     }
 
-    void ResumeGame ()
-    {
+    void ResumeGame()
+    {   
+        PauseMenu.SetActive(false);
         Time.timeScale = 1;
+        isPaused = false;
     }
 
 

@@ -642,7 +642,7 @@ MonoBehaviour:
   _jumpHeightMultiplier: 1.9
   health: 3
   scoreWorth: 0
-  invulnTime: 1
+  invulnTime: 2
   playerContinueInstance: 0
 --- !u!114 &6486972217815480742
 MonoBehaviour:
