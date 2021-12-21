@@ -153,20 +153,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   introductionText: {fileID: 647627050}
-  continueText: {fileID: 1056803241}
   sentences:
-  - Harry Doe, one of the best agents from ARROW, with excelents capabilities and
-    a perfect rate of accomplished missions
+  - This is Harry Doe, one of the best agents from ARROW, with excelents capabilities
+    and a perfect rate of accomplished missions.
   - On his last mission, he was sent to a investigate a terrorist organization from
     the underworld when suddenly...
-  - The accident happened
+  - The accident happened.
   - The Agent Doe survived, but now, he is in a crippled condition, and unabled to
-    do missions
+    do missions.
   - Fortunately, the agency was working on the second version of a weapon capable
-    of meeting the mission requirements of the field. The Jennerest MK-II
+    of meeting the mission requirements of the field. The Jennerest MK-II.
   - Harry was the perfect match since the events, now this experienced agent has
-    the second chance to do his best and complete the mission
+    the second chance to do his best and complete the mission.
+  - Harry is currently training with his new tool. He wants to complete the mission
+    that he left unfinished.
+  - Let's begin.
   startMissionButton: {fileID: 1270371158}
+  continueButton: {fileID: 1056803239}
 --- !u!4 &133129762
 Transform:
   m_ObjectHideFlags: 0
@@ -400,7 +403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1056803240
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1043,7 +1046,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 862453467814c7c4ebedeeb598d50341, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
