@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public Animator animator;   
     public float rotation;
-    
+    public AudioSource move_sfx;
     private float playerCanFire;
 
     /*
@@ -52,12 +52,12 @@ public class PlayerController : MonoBehaviour
 
     private SwapContinueController _swap;
 
-
+    public bool _ismoving=false;
 
 
     void Start()
     {
-
+        
         playerRenderer = this.gameObject.GetComponent<Renderer>();
         originalColor = playerRenderer.material.color;
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -83,12 +83,19 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(Input.GetAxis("Horizontal"))>0)
         {
             animator.SetBool("isMoving", true);
+            _ismoving=true;
         }
         else
         {
             animator.SetBool("isMoving", false);
+            _ismoving=false;
+
         }
 
+        if (_ismoving == false)
+        {
+            move_sfx.Play(); //nose porque funciona asi
+        }
     }
 
     public void Control_Player()  

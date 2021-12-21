@@ -6,7 +6,7 @@ public class PlayerShootController : MonoBehaviour
 {   
     //Prefab de la bala
     public GameObject _bulletPrefab;
-   
+    public AudioSource shoot_sfx;
     //Ubicación donde spawnea la bala (en el player) al ser disparada 
     public Transform _bulletSpawnReference;
 
@@ -51,6 +51,7 @@ public class PlayerShootController : MonoBehaviour
         {
             _nextFire =_fireRate;
             Instantiate(_bulletPrefab, _shoot, _bulletSpawnReference.rotation);
+            shoot_sfx.Play();
         }
 
         
