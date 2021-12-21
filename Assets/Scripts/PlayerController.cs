@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;   
     public float rotation;
     public AudioSource move_sfx;
+    public AudioSource jump_sfx;
     private float playerCanFire;
 
     /*
@@ -130,6 +131,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump") && Mathf.Abs(_rigidBody.velocity.y) < 0.001f)
         {
             _rigidBody.AddForce(new Vector2(0, Jump_Height), ForceMode2D.Impulse);
+            jump_sfx.Play();
             
         }
     }

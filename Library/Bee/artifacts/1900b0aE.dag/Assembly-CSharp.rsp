@@ -341,6 +341,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/AIPatrol.cs"
+"Assets/Scripts/AudioController.cs"
 "Assets/Scripts/BulletController.cs"
 "Assets/Scripts/CameraSmoothFollow.cs"
 "Assets/Scripts/EnemyBulletController.cs"
